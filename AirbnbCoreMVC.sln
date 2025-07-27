@@ -19,6 +19,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AirbnbMVC", "AirbnbMVC", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tripster_1", "Tripster_1\Tripster_1.csproj", "{961B366A-67EF-49CB-92DE-47A78537595A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuthServices", "AuthServices", "{5E6852C6-5403-4ACF-AAB5-E1477D1637AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthServices", "AuthServices\AuthServices.csproj", "{A57B9AA2-AB28-4ED9-A57C-B3AB739B0532}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,10 @@ Global
 		{961B366A-67EF-49CB-92DE-47A78537595A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{961B366A-67EF-49CB-92DE-47A78537595A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{961B366A-67EF-49CB-92DE-47A78537595A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A57B9AA2-AB28-4ED9-A57C-B3AB739B0532}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A57B9AA2-AB28-4ED9-A57C-B3AB739B0532}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A57B9AA2-AB28-4ED9-A57C-B3AB739B0532}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A57B9AA2-AB28-4ED9-A57C-B3AB739B0532}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +63,7 @@ Global
 		{27B2741B-C638-4526-A283-0F1A8A748B5B} = {1FF3692B-CC10-4BCC-BAE3-70E292734AAA}
 		{BA21E11B-F720-4A1E-A9C3-06F6331243BF} = {1FF3692B-CC10-4BCC-BAE3-70E292734AAA}
 		{961B366A-67EF-49CB-92DE-47A78537595A} = {EA2BAC1A-5580-4EAE-8E6D-CD4D033374C3}
+		{A57B9AA2-AB28-4ED9-A57C-B3AB739B0532} = {5E6852C6-5403-4ACF-AAB5-E1477D1637AE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D45FC23F-7642-41FB-A44D-F17586780928}

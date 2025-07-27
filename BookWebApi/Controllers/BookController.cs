@@ -1,5 +1,6 @@
 ﻿
 using BookWebApi.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -8,6 +9,7 @@ namespace BookWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class BookController : ControllerBase
     {
         private readonly HttpClient _client;

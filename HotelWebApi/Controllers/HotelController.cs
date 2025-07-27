@@ -1,4 +1,5 @@
 ﻿using HotelWebApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -17,6 +18,7 @@ namespace HotelWebApi.Controllers
             _client = new HttpClient();
         }
         [HttpGet]
+        [Authorize(Roles = "Admin,User")]
         public IActionResult Index()
         {
             List<HotelView> hotelist = new List<HotelView>();
@@ -29,6 +31,7 @@ namespace HotelWebApi.Controllers
             return Ok(hotelist);
         }
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(HotelView model)
         {
             string data = JsonConvert.SerializeObject(model);
@@ -53,6 +56,7 @@ namespace HotelWebApi.Controllers
             return BadRequest("Error updating hotel");
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var response = await _client.DeleteAsync($"https://localhost:7253/api/Hotel/{id}");

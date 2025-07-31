@@ -23,6 +23,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AuthServices", "AuthService
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthServices", "AuthServices\AuthServices.csproj", "{A57B9AA2-AB28-4ED9-A57C-B3AB739B0532}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateWay", "ApiGateWay", "{6F215027-97C5-420C-B7E8-5C51DC0764A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostelApiGateWay", "HostelApiGateWay\HostelApiGateWay.csproj", "{487901CB-F8EF-400F-A814-8BC4AF62901B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +57,10 @@ Global
 		{A57B9AA2-AB28-4ED9-A57C-B3AB739B0532}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A57B9AA2-AB28-4ED9-A57C-B3AB739B0532}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A57B9AA2-AB28-4ED9-A57C-B3AB739B0532}.Release|Any CPU.Build.0 = Release|Any CPU
+		{487901CB-F8EF-400F-A814-8BC4AF62901B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{487901CB-F8EF-400F-A814-8BC4AF62901B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{487901CB-F8EF-400F-A814-8BC4AF62901B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{487901CB-F8EF-400F-A814-8BC4AF62901B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +72,7 @@ Global
 		{BA21E11B-F720-4A1E-A9C3-06F6331243BF} = {1FF3692B-CC10-4BCC-BAE3-70E292734AAA}
 		{961B366A-67EF-49CB-92DE-47A78537595A} = {EA2BAC1A-5580-4EAE-8E6D-CD4D033374C3}
 		{A57B9AA2-AB28-4ED9-A57C-B3AB739B0532} = {5E6852C6-5403-4ACF-AAB5-E1477D1637AE}
+		{487901CB-F8EF-400F-A814-8BC4AF62901B} = {6F215027-97C5-420C-B7E8-5C51DC0764A9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D45FC23F-7642-41FB-A44D-F17586780928}

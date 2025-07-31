@@ -43,6 +43,7 @@ namespace HotelWebApi.Controllers
             }
             return BadRequest("Error creating hotel");
         }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, HotelView model)
         {
@@ -56,7 +57,7 @@ namespace HotelWebApi.Controllers
             return BadRequest("Error updating hotel");
         }
         [HttpDelete("{id}")]
-        [Authorize(Roles ="Admin")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var response = await _client.DeleteAsync($"https://localhost:7253/api/Hotel/{id}");
@@ -79,5 +80,6 @@ namespace HotelWebApi.Controllers
             }
             return NotFound("Hotel not found");
         }
+
     }
 }

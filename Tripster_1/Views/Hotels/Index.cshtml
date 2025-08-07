@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Tripster_1.Models.HotelViewModel>
+
+@{
+    ViewData["Title"] = "Hotels";
+}
+
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background: url('https://res.cloudinary.com/dtxqeadyh/image/upload/v1754546208/31095_bhq6wp.jpg') no-repeat center center fixed;
+        background-size: cover;
+        overflow-x: hidden;
+        color: white;
+        position: relative;
+    }
+
+        /* Overlay to darken background slightly */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+
+    .content-wrapper {
+        padding: 2rem;
+        min-height: 100vh;
+    }
+
+    .card {
+        background-color: rgba(20, 20, 20, 0.7); /* semi-transparent black */
+        backdrop-filter: blur(4px); /* slight blur */
+        border-radius: 15px;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.7);
+        transition: transform 0.3s;
+    }
+
+        .card:hover {
+            transform: scale(1.03);
+        }
+
+    h1 {
+        color: white;
+        text-shadow: 2px 2px 12px #000;
+    }
+
+    .btn {
+        border-radius: 20px;
+    }
+
+    .card-footer {
+        background: transparent;
+        border-top: none;
+    }
+</style>
+
+<div class="content-wrapper">
+    <h1 class="mb-4">Hotel Listings</h1>
+
+    <p>
+        <a asp-controller="Hotels" asp-action="Create" class="btn btn-primary mb-4">Create New</a>
+    </p>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Title</h5>
+                        <h6 class="card-subtitle mb-2 text-light">@item.Location</h6>
+                        <p class="card-text">@item.Description</p>
+                        <p class="card-text"><strong>₹@item.PricePerNight / night</strong></p>
+                    </div>
+                    <div class="card-footer">
+                        <a asp-action="Edit" asp-route-id="@item.PropertyId" class="btn btn-sm btn-outline-warning me-2">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.PropertyId" class="btn btn-sm btn-outline-info me-2">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.PropertyId" class="btn btn-sm btn-outline-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

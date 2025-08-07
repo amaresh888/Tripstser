@@ -9,6 +9,7 @@ namespace HotelWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class HotelController : ControllerBase
     {
         private readonly HttpClient _client;
@@ -18,7 +19,8 @@ namespace HotelWebApi.Controllers
             _client = new HttpClient();
         }
         [HttpGet]
-        [Authorize(Roles = "Admin,User")]
+        //   [Authorize(Roles = "Admin,user")]
+        [AllowAnonymous]
         public IActionResult Index()
         {
             List<HotelView> hotelist = new List<HotelView>();
@@ -31,7 +33,8 @@ namespace HotelWebApi.Controllers
             return Ok(hotelist);
         }
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin,user")]
+        [AllowAnonymous]
         public async Task<IActionResult> Create(HotelView model)
         {
             string data = JsonConvert.SerializeObject(model);
@@ -45,6 +48,7 @@ namespace HotelWebApi.Controllers
         }
 
         [HttpPut("{id}")]
+
         public async Task<IActionResult> Update(int id, HotelView model)
         {
             string data = JsonConvert.SerializeObject(model);

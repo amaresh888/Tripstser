@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36203.30
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirbnbApi", "AirbnbApi\AirbnbApi.csproj", "{35365234-95BE-456A-A583-87E5C11DED7F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelbnbApi", "AirbnbApi\HotelbnbApi.csproj", "{35365234-95BE-456A-A583-87E5C11DED7F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookWebApi", "BookWebApi\BookWebApi.csproj", "{B3A4BBD5-8892-4A2E-A44C-EF5632B2C500}"
 EndProject
@@ -11,11 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelWebApi", "HotelWebApi\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserWebApi", "UserWebApi\UserWebApi.csproj", "{BA21E11B-F720-4A1E-A9C3-06F6331243BF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Airbnb", "Airbnb", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hotelbnb", "Hotelbnb", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AirbnbServices", "AirbnbServices", "{1FF3692B-CC10-4BCC-BAE3-70E292734AAA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HotelServices", "HotelServices", "{1FF3692B-CC10-4BCC-BAE3-70E292734AAA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AirbnbMVC", "AirbnbMVC", "{EA2BAC1A-5580-4EAE-8E6D-CD4D033374C3}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HotelMVC", "HotelMVC", "{EA2BAC1A-5580-4EAE-8E6D-CD4D033374C3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tripster_1", "Tripster_1\Tripster_1.csproj", "{961B366A-67EF-49CB-92DE-47A78537595A}"
 EndProject
@@ -25,7 +25,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthServices", "AuthService
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateWay", "ApiGateWay", "{6F215027-97C5-420C-B7E8-5C51DC0764A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostelApiGateWay", "HostelApiGateWay\HostelApiGateWay.csproj", "{487901CB-F8EF-400F-A814-8BC4AF62901B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelApiGateWay", "HostelApiGateWay\HotelApiGateWay.csproj", "{487901CB-F8EF-400F-A814-8BC4AF62901B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcelotGateway", "OcelotGateway\OcelotGateway.csproj", "{7E95764C-9AA4-441F-96EE-0957C4D2D4D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,10 @@ Global
 		{487901CB-F8EF-400F-A814-8BC4AF62901B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{487901CB-F8EF-400F-A814-8BC4AF62901B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{487901CB-F8EF-400F-A814-8BC4AF62901B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E95764C-9AA4-441F-96EE-0957C4D2D4D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E95764C-9AA4-441F-96EE-0957C4D2D4D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E95764C-9AA4-441F-96EE-0957C4D2D4D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E95764C-9AA4-441F-96EE-0957C4D2D4D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +79,7 @@ Global
 		{961B366A-67EF-49CB-92DE-47A78537595A} = {EA2BAC1A-5580-4EAE-8E6D-CD4D033374C3}
 		{A57B9AA2-AB28-4ED9-A57C-B3AB739B0532} = {5E6852C6-5403-4ACF-AAB5-E1477D1637AE}
 		{487901CB-F8EF-400F-A814-8BC4AF62901B} = {6F215027-97C5-420C-B7E8-5C51DC0764A9}
+		{7E95764C-9AA4-441F-96EE-0957C4D2D4D0} = {6F215027-97C5-420C-B7E8-5C51DC0764A9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D45FC23F-7642-41FB-A44D-F17586780928}

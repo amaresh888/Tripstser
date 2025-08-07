@@ -6,7 +6,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5007
+          "Port": 7144
         }
       ],
       "UpstreamPathTemplate": "/hotel",
@@ -38,6 +38,6 @@
     }
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "https://localhost:7004"
+    "BaseUrl": "https://localhost:7090"
   }
 }

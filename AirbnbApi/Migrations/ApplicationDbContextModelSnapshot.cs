@@ -36,6 +36,9 @@ namespace AirbnbApi.Migrations
                     b.Property<DateTime>("CheckOutDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("NumberofPeople")
+                        .HasColumnType("int");
+
                     b.Property<int>("PropertyId")
                         .HasColumnType("int");
 
@@ -64,6 +67,10 @@ namespace AirbnbApi.Migrations
                         .HasMaxLength(1000)
                         .HasColumnType("nvarchar(1000)");
 
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Location")
                         .IsRequired()
                         .HasMaxLength(150)
@@ -86,6 +93,7 @@ namespace AirbnbApi.Migrations
                         {
                             PropertyId = 1,
                             Description = "Beach-facing villa with stunning sunrise views.",
+                            ImageUrl = "https://res.cloudinary.com/dtxqeadyh/image/upload/v1754644616/pexels-kelly-2869215_lla3mr.jpg",
                             Location = "Goa",
                             PricePerNight = 2500,
                             Title = "Sunrise Paradise"
@@ -94,6 +102,7 @@ namespace AirbnbApi.Migrations
                         {
                             PropertyId = 2,
                             Description = "Cozy cottage in the heart of the mountains.",
+                            ImageUrl = "https://res.cloudinary.com/dtxqeadyh/image/upload/v1754644760/pexels-boonkong-boonpeng-442952-1134176_stpwik.jpg",
                             Location = "Manali",
                             PricePerNight = 3000,
                             Title = "Himalayan Retreat"
@@ -102,6 +111,7 @@ namespace AirbnbApi.Migrations
                         {
                             PropertyId = 3,
                             Description = "Luxury suite with skyline views.",
+                            ImageUrl = "https://res.cloudinary.com/dtxqeadyh/image/upload/v1754644801/pexels-pixabay-261388_unh5uf.jpg",
                             Location = "Mumbai",
                             PricePerNight = 5000,
                             Title = "City Luxe Hotel"
@@ -110,6 +120,7 @@ namespace AirbnbApi.Migrations
                         {
                             PropertyId = 4,
                             Description = "Authentic Rajasthani tents in the Thar desert.",
+                            ImageUrl = "https://res.cloudinary.com/dtxqeadyh/image/upload/v1754644858/pexels-thorsten-technoman-109353-338504_amp2hh.jpg",
                             Location = "Jaisalmer",
                             PricePerNight = 2000,
                             Title = "Desert Safari Stay"
@@ -138,6 +149,9 @@ namespace AirbnbApi.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<double>("PhoneNumber")
+                        .HasColumnType("float");
 
                     b.HasKey("UserId");
 

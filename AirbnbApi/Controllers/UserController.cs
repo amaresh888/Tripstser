@@ -47,15 +47,16 @@ namespace AirbnbApi.Controllers
             {
                 Name = userDTO.Name,
                 Email = userDTO.Email,
-                Password = userDTO.Password 
+                Password = userDTO.Password,
+                PhoneNumber = userDTO.PhoneNumber
             };
             _db.users.Add(User);
             _db.SaveChanges();
             userDTO.UserId = User.UserId;
-            return Ok(User);
+            return Ok(userDTO.UserId);
         }
         [HttpPut("{id}")]
-        public IActionResult Update([FromBody] UserDTO userDTO)
+        public IActionResult Update(int id,[FromBody] UserDTO userDTO)
         {
             //if (userDTO == null)
             //{
@@ -68,9 +69,12 @@ namespace AirbnbApi.Controllers
             //}
             user.Name = userDTO.Name;
             user.Email = userDTO.Email;
-            user.Password = userDTO.Password; 
+            user.Password = userDTO.Password;
+            user.PhoneNumber = userDTO.PhoneNumber;
+            _db.Update(user);
             _db.SaveChanges();
-            return Ok(user);
+            userDTO.UserId = user.UserId;
+            return Ok(userDTO.UserId);
         }
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)

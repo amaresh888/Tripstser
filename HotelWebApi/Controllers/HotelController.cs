@@ -9,7 +9,7 @@ namespace HotelWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class HotelController : ControllerBase
     {
         private readonly HttpClient _client;
@@ -19,8 +19,8 @@ namespace HotelWebApi.Controllers
             _client = new HttpClient();
         }
         [HttpGet]
-        //   [Authorize(Roles = "Admin,user")]
-        [AllowAnonymous]
+      
+
         public IActionResult Index()
         {
             List<HotelView> hotelist = new List<HotelView>();
@@ -33,8 +33,8 @@ namespace HotelWebApi.Controllers
             return Ok(hotelist);
         }
         [HttpPost]
-        //[Authorize(Roles = "Admin,user")]
-        [AllowAnonymous]
+
+        [Authorize(Roles ="Admin")]
         public async Task<IActionResult> Create(HotelView model)
         {
             string data = JsonConvert.SerializeObject(model);
@@ -48,7 +48,8 @@ namespace HotelWebApi.Controllers
         }
 
         [HttpPut("{id}")]
-
+        [Authorize(Roles ="Admin")]
+       
         public async Task<IActionResult> Update(int id, HotelView model)
         {
             string data = JsonConvert.SerializeObject(model);
@@ -60,19 +61,20 @@ namespace HotelWebApi.Controllers
             }
             return BadRequest("Error updating hotel");
         }
-        [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            var response = await _client.DeleteAsync($"https://localhost:7253/api/Hotel/{id}");
-            if (response.IsSuccessStatusCode)
-            {
-                return Ok("deleted");
-            }
-            return BadRequest("Error deleting hotel");
+        //[HttpDelete("{id}")]
+        ////[Authorize(Roles = "Admin")]
+        //public async Task<IActionResult> Delete(int id)
+        //{
+        //    var response = await _client.DeleteAsync($"https://localhost:7253/api/Hotel/{id}");
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        return Ok("deleted");
+        //    }
+        //    return BadRequest("Error deleting hotel");
 
-        }
+        //}
         [HttpGet("{id}")]
+        [Authorize(Roles = "Admin,User")]
         public async Task<IActionResult> GetById(int id)
         {
             var response = await _client.GetAsync($"https://localhost:7253/api/Hotel/{id}");
@@ -84,6 +86,19 @@ namespace HotelWebApi.Controllers
             }
             return NotFound("Hotel not found");
         }
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> GetByTitle(string Title)
+        //{
+        //    var response = await _client.GetAsync($"https://localhost:7253/api/Hotel/{Title}");
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        string data = await response.Content.ReadAsStringAsync();
+        //        var hotel = JsonConvert.DeserializeObject<HotelView>(data);
+        //        return Ok(hotel);
+        //    }
+        //    return NotFound("Hotel not found");
+
+        //}
 
     }
 }

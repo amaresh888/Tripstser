@@ -1,0 +1,111 @@
+﻿@model Tripster_2.Models.UserViewModel
+
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<style>
+    body {
+        background: #f3f3f3;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+    .profile-container {
+        max-width: 800px;
+        margin: 50px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        gap: 30px;
+    }
+
+    .profile-image {
+        flex: 0 0 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .profile-image img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ddd;
+        }
+
+    .profile-details {
+        flex: 1;
+    }
+
+        .profile-details h2 {
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+
+    .detail-item {
+        margin-bottom: 15px;
+    }
+
+    .detail-label {
+        font-weight: bold;
+        color: #555;
+        display: inline-block;
+        width: 150px;
+    }
+
+    .detail-value {
+        color: #222;
+    }
+
+    .edit-btn {
+        background: #ff9900;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+        .edit-btn:hover {
+            background: #e68a00;
+        }
+</style>
+
+<div class="profile-container">
+    <!-- Left Side Profile Image -->
+    <div class="profile-image">
+        <img src="/images/default-profile.png" alt="Profile Picture" />
+    </div>
+
+    <!-- Right Side Details -->
+    <div class="profile-details">
+        <h2>My Profile</h2>
+
+        <div class="detail-item">
+            <span class="detail-label">Name:</span>
+            <span class="detail-value">@Model.Name</span>
+        </div>
+
+        <div class="detail-item">
+            <span class="detail-label">Email:</span>
+            <span class="detail-value">@Model.Email</span>
+        </div>
+
+        <div class="detail-item">
+            <span class="detail-label">Password:</span>
+            <span class="detail-value">@Model.Password</span>
+        </div>
+
+        <div class="detail-item">
+            <span class="detail-label">Phone Number:</span>
+            <span class="detail-value">@Model.PhoneNumber</span>
+        </div>
+
+        <a asp-action="EditUser" asp-controller="User" class="edit-btn">Edit Profile</a>
+    </div>
+</div>

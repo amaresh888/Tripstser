@@ -1,0 +1,116 @@
+﻿@model Tripster_2.Models.HotelViewModel
+
+@{
+    ViewData["Title"] = "Add New Hotel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Add this in _Layout.cshtml HEAD section (only once globally) -->
+<!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"> -->
+
+<style>
+    body {
+        background: url("https://res.cloudinary.com/dtxqeadyh/image/upload/v1754560466/pexels-pixabay-261102_dj4tho.jpg") no-repeat center center fixed;
+        background-size: cover;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: white;
+    }
+
+    h1, h4 {
+        color: #ffffff;
+        text-align: center;
+        margin-bottom: 20px;
+        text-shadow: 1px 1px 4px black;
+        font-weight: 600;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    form {
+        width: 100%;
+        max-width: 600px;
+        margin: 100px auto;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    label {
+        font-weight: 600;
+        color: #ffffff;
+    }
+
+    .form-control {
+        background-color: rgba(255, 255, 255, 0.85);
+        color: #000;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 10px;
+        font-weight: bold;
+        background-color: #0056b3;
+        border: none;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+        .btn-primary:hover {
+            background-color: #003d80;
+        }
+
+    a {
+        display: block;
+        margin-top: 20px;
+        text-align: center;
+        font-weight: 600;
+        color: white;
+        text-shadow: 1px 1px 3px black;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .text-danger {
+        font-size: 0.9rem;
+        color: #ffcccc;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+</style>
+
+
+<h1>Add a New Hotel</h1>
+<h4>Please enter the hotel details below</h4>
+
+<form asp-action="Create" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger text-center mb-3"></div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" placeholder="Enter hotel name" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Location"></label>
+        <input asp-for="Location" class="form-control" placeholder="City or destination (e.g., Goa, Manali)" />
+        <span asp-validation-for="Location" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="PricePerNight"></label>
+        <input asp-for="PricePerNight" class="form-control" placeholder="Enter price per night (in ₹)" />
+        <span asp-validation-for="PricePerNight" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-4">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control" placeholder="Brief description of the hotel" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Hotel Details</button>
+</form>
+
+<a asp-action="Index">← Return to Hotel Listings</a>

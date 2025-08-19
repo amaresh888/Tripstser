@@ -38,7 +38,8 @@ namespace UserWebApi.Controllers
 
             if (response.IsSuccessStatusCode)
             {
-                return Ok("created");
+                var id = JsonConvert.DeserializeObject<int>(responseContent);
+                return Ok(id);
             }
 
             return BadRequest($"Error creating user: {responseContent}");
@@ -50,9 +51,11 @@ namespace UserWebApi.Controllers
             string data = JsonConvert.SerializeObject(model);
             StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
             var response = await _client.PutAsync($"https://localhost:7253/api/User/{Id}", content);
+            string responseContent = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
-                return Ok("updated");
+                var id = JsonConvert.DeserializeObject<int>(responseContent);
+                return Ok(id);
             }
             return BadRequest("Error updating user");
         }

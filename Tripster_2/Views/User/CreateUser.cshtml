@@ -1,0 +1,102 @@
+﻿@model Tripster_2.Models.UserViewModel
+
+@{
+    ViewData["Title"] = "Create User";
+}
+
+<style>
+    .create-user-container {
+        min-height: 80vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f8f9fa;
+        padding: 20px;
+    }
+
+    .create-user-card {
+        background: white;
+        padding: 30px 40px;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        max-width: 480px;
+        width: 100%;
+    }
+
+        .create-user-card h1 {
+            font-weight: 700;
+            color: #343a40;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+    .form-group label {
+        font-weight: 600;
+        color: #495057;
+    }
+
+    .form-control {
+        border-radius: 8px;
+        padding: 10px 15px;
+        font-size: 1rem;
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 12px;
+        font-size: 1.1rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+    }
+
+    .back-link {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        font-weight: 600;
+        color: #007bff;
+        text-decoration: none;
+    }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<div class="create-user-container">
+    <div class="create-user-card">
+        <h1>@ViewData["Title"]</h1>
+
+        <form asp-action="CreateUser" method="post" novalidate>
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" type="password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-4">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </form>
+
+        <a asp-action="Index" class="back-link">← Back to List</a>
+    </div>
+</div>

@@ -9,7 +9,7 @@ namespace BookWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    
     public class BookController : ControllerBase
     {
         private readonly HttpClient _client;
@@ -33,6 +33,7 @@ namespace BookWebApi.Controllers
 
             return Ok(booklist);
         }
+        
         [HttpPost]
         public async Task<IActionResult> Create(BookView model)
         {

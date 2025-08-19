@@ -1,0 +1,123 @@
+﻿@model Tripster_1.Models.HotelViewModel
+
+@{
+    ViewData["Title"] = "Edit Hotel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    body {
+        background-image: url('https://i.pinimg.com/1200x/a5/37/22/a53722b63b7eeb9c7d68b3968db91ed5.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        min-height: 100vh;
+        color: white;
+    }
+
+    .edit-page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 80px 20px;
+    }
+
+    h1, h4 {
+        text-align: center;
+        color: #ffffff;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    form {
+        width: 100%;
+        max-width: 600px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        backdrop-filter: blur(3px);
+    }
+
+    label {
+        font-weight: 600;
+        color: #ffffff;
+        text-shadow: 1px 1px 3px #000;
+    }
+
+    .form-control {
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.15);
+        color: white;
+        backdrop-filter: blur(4px);
+    }
+
+        .form-control::placeholder {
+            color: #f0f0f0;
+        }
+
+    .text-danger {
+        color: #ffbdbd;
+    }
+
+    .btn-primary {
+        background-color: rgba(52, 152, 219, 0.8);
+        border: none;
+        padding: 12px;
+        font-weight: bold;
+        border-radius: 6px;
+        width: 100%;
+        color: white;
+        transition: background-color 0.3s ease;
+    }
+
+        .btn-primary:hover {
+            background-color: rgba(41, 128, 185, 0.85);
+        }
+
+    a {
+        margin-top: 20px;
+        text-align: center;
+        color: #ffffff;
+        text-shadow: 1px 1px 4px #000;
+        font-weight: bold;
+        display: block;
+    }
+</style>
+
+<div class="edit-page">
+    <h1>Edit Hotel</h1>
+    <h4>Update Details</h4>
+    <hr style="border-top: 2px solid #ffffff88; width: 100px;" />
+
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="PropertyId" />
+
+        <label asp-for="Title" class="control-label"></label>
+        <input asp-for="Title" class="form-control" placeholder="Hotel Title" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+
+        <label asp-for="Location" class="control-label"></label>
+        <input asp-for="Location" class="form-control" placeholder="Location" />
+        <span asp-validation-for="Location" class="text-danger"></span>
+
+        <label asp-for="PricePerNight" class="control-label"></label>
+        <input asp-for="PricePerNight" class="form-control" placeholder="Price Per Night" />
+        <span asp-validation-for="PricePerNight" class="text-danger"></span>
+
+        <label asp-for="Description" class="control-label"></label>
+        <input asp-for="Description" class="form-control" placeholder="Description" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+
+        <label asp-for="ImageUrl" class="control-label"></label>
+        <input asp-for="ImageUrl" class="form-control" placeholder="ImageUrl" />
+        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+
+        <input type="submit" value="Save Changes" class="btn btn-primary" />
+    </form>
+
+    <a asp-action="Index">⟵ Back to Hotel List</a>
+</div>

@@ -1,0 +1,139 @@
+﻿@model Tripster_1.Models.UserViewModel
+
+@{
+    ViewData["Title"] = "Edit User";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    body {
+        background-image: url('https://images.unsplash.com/photo-1561501900-3701fa6a0864?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bHV4dXJ5JTIwaG90ZWx8ZW58MHx8MHx8fDA%3D');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .form-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5); /* dark overlay */
+        padding: 40px 20px;
+    }
+
+    .edit-form {
+        background-color: rgba(255, 255, 255, 0.1); /* subtle white overlay */
+        padding: 30px;
+        border-radius: 12px;
+        backdrop-filter: blur(10px);
+        width: 100%;
+        max-width: 450px;
+        color: #fff;
+    }
+
+        .edit-form h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 28px;
+            color: #ffffff;
+        }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            font-weight: 500;
+            margin-bottom: 6px;
+            display: block;
+            color: #f0f0f0;
+        }
+
+    .form-control {
+        border-radius: 6px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+        color: #000;
+    }
+
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+    .btn-primary {
+        width: 100%;
+        font-weight: 600;
+        padding: 12px;
+        border-radius: 6px;
+        background-color: #007bff;
+        border: none;
+        color: #fff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .back-link {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        font-weight: 500;
+        color: #f0f0f0;
+    }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<div class="form-wrapper">
+    <div class="edit-form">
+        <h1>Edit User</h1>
+
+        <form asp-action="EditUser">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" readonly />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" type="text" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <input type="submit" value="Save" class="btn btn-primary" />
+        </form>
+
+        <a asp-action="Index" class="back-link">← Back to User List</a>
+    </div>
+</div>

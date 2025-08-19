@@ -21,5 +21,7 @@ namespace AirbnbApi.DTO
         [Required(ErrorMessage = "Description is required")]
         [StringLength(500, ErrorMessage = "Description can't exceed 500 characters")]
         public string Description { get; set; }
+
+        public string ImageUrl { get; set; } 
     }
 }

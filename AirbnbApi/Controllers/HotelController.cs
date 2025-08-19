@@ -48,7 +48,8 @@ namespace AirbnbApi.Controllers
                 Title = hotelDto.Title,
                 Location = hotelDto.Location,
                 PricePerNight = hotelDto.PricePerNight,
-                Description = hotelDto.Description
+                Description = hotelDto.Description,
+                ImageUrl = hotelDto.ImageUrl
             };
 
             _db.hotels.Add(hotel);
@@ -70,6 +71,7 @@ namespace AirbnbApi.Controllers
             hotel.Location = dto.Location;
             hotel.Description = dto.Description;
             hotel.PricePerNight = dto.PricePerNight;
+            hotel.ImageUrl = dto.ImageUrl;
             _db.hotels.Update(hotel);
 
             _db.SaveChanges();
@@ -88,10 +90,17 @@ namespace AirbnbApi.Controllers
             _db.hotels.Remove(obj);
             _db.SaveChanges();
             return Ok($"Hotel with ID {id} deleted successfully.");
-
-
-
         }
+        //[HttpGet("{id}")]
+        //public IActionResult GetTitle(string Title)
+        //{
+        //    var obj = _db.hotels.Find(Title);
+        //    if(obj == null)
+        //    {
+        //        return NotFound($"Hotel with Title {Title} not found.");
+        //    }
+        //    return Ok(obj);
+        //}
     }
 }
 

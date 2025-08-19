@@ -5,6 +5,7 @@ namespace AirbnbApi.DTO
 {
     public class BookingDTO
     {
+        [Key]
         public int Id { get; set; }
 
         [Required(ErrorMessage = "User ID is required")]
@@ -21,7 +22,13 @@ namespace AirbnbApi.DTO
 
         [Required(ErrorMessage = "Check-out date is required")]
         [DataType(DataType.Date)]
-       
+
+        public string Title { get; set; }
+        public string Name { get; set; }
+
         public DateTime CheckOutDate { get; set; }
+        [Required]
+        public int NumberofPeople { get; set; }
+       
     }
 }

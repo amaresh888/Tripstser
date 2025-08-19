@@ -1,0 +1,70 @@
+﻿@model Tripster_2.Models.BookViewModel
+
+@{
+    ViewData["Title"] = "Book Now";
+}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-0 shadow-lg rounded-4">
+                <div class="card-header bg-success text-white text-center rounded-top-4">
+                    <h3 class="mb-0 py-2">Book Your Stay</h3>
+                </div>
+                <div class="card-body px-4 py-4">
+                    <form asp-action="CreateBooking" novalidate>
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        @* <div class="form-floating mb-3">
+                            <input asp-for="Id" class="form-control" placeholder="Id" />
+                            <label asp-for="Id"></label>
+                            <span asp-validation-for="Id" class="text-danger small"></span>
+                        </div> *@
+
+                        <div class="form-floating mb-3">
+                            <input asp-for="Name" class="form-control" placeholder="Name"   />
+                            <label asp-for="Name"></label>
+                            <span asp-validation-for="Name" class="text-danger small"></span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="Title" class="form-control" placeholder="Title" readonly />
+                            <label asp-for="Title"></label>
+                            <span asp-validation-for="Title" class="text-danger small"></span>
+                        </div>
+
+                      @*   <div class="form-floating mb-3">
+                            <input asp-for="PropertyId" class="form-control" placeholder="Property ID" readonly />
+                            <label asp-for="PropertyId"></label>
+                            <span asp-validation-for="PropertyId" class="text-danger small"></span>
+                        </div> *@
+                       
+                        
+
+                        <div class="form-floating mb-3">
+                            <input asp-for="CheckInDate" type="date" class="form-control" placeholder="Check-in Date" />
+                            <label asp-for="CheckInDate"></label>
+                            <span asp-validation-for="CheckInDate" class="text-danger small"></span>
+                        </div>
+
+                        <div class="form-floating mb-4">
+                            <input asp-for="CheckOutDate" type="date" class="form-control" placeholder="Check-out Date" />
+                            <label asp-for="CheckOutDate"></label>
+                            <span asp-validation-for="CheckOutDate" class="text-danger small"></span>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input asp-for="NumberofPeople" class="form-control" placeholder="NumberofPeople" />
+                            <label asp-for="NumberofPeople"></label>
+                            <span asp-validation-for="NumberofPeople" class="text-danger small"></span>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success btn-lg rounded-pill">
+                                Confirm Booking
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

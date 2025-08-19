@@ -17,8 +17,9 @@ namespace Tripster_1.Controllers
         public HotelsController()
         {
             _client = new HttpClient();
+           
         }
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             List<HotelViewModel> hotelList = new List<HotelViewModel>();
@@ -35,19 +36,120 @@ namespace Tripster_1.Controllers
 
             return View(hotelList);
         }
-        [AllowAnonymous]
-        public async Task<IActionResult> Create(HotelView model)
+        [HttpGet]
+     // [Authorize]
+        public IActionResult Create()
         {
-            string data = JsonConvert.SerializeObject(model);
-            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
-            var response = await _client.PostAsync("https://localhost:7144/api/Hotel", content);
-            if (response.IsSuccessStatusCode)
+            // Check session for logged-in user
+            var userName = HttpContext.Session.GetString("userName");
+            if (string.IsNullOrEmpty(userName))
             {
-                return Ok("created");
+                // Not logged in, redirect to login page or show access denied
+                return Redirect("/Identity/Account/Login");
             }
-            return BadRequest("Error creating hotel");
+            return View();
         }
 
 
+        [HttpPost]
+        public async Task<IActionResult> Create(HotelViewModel model)
+        {
+            string data = JsonConvert.SerializeObject(model);
+            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+
+            var response = await _client.PostAsync("https://localhost:7144/api/Hotel", content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var errorResponse = await response.Content.ReadAsStringAsync();
+            ModelState.AddModelError("", $"API Error: {errorResponse}");
+
+            return View(model);
+        }
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var userName = HttpContext.Session.GetString("userName");
+            if (string.IsNullOrEmpty(userName))
+            {
+                
+                return Redirect("/Identity/Account/Login");
+            }
+            var response = await _client.GetAsync($"https://localhost:7144/api/Hotel/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                var hotel = JsonConvert.DeserializeObject<HotelViewModel>(data);
+                return View(hotel);
+            }
+            else
+            {
+                ViewBag.Error = $"API Error: {response.StatusCode}";
+                return RedirectToAction("Index");
+
+            }
+        }
+        [HttpPost]
+
+        public async Task<IActionResult> Edit(int id, HotelViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            string data = JsonConvert.SerializeObject(model);
+            StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
+            var response = await _client.PutAsync($"https://localhost:7144/api/Hotel/{id}", content);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.Error = $"API Error: {response.StatusCode}";
+                return View(model);
+            }
+        }
+
+        [HttpGet("Delete/{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var response = await _client.DeleteAsync($"https://localhost:7144/api/Hotel/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var response = await _client.GetAsync($"https://localhost:7144/api/Hotel/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                var hotel = JsonConvert.DeserializeObject<HotelViewModel>(data);
+                return View(hotel);
+            }
+            else
+            {
+                ViewBag.Error = $"API Error: {response.StatusCode}";
+                return RedirectToAction("Index");
+            }
+
+
+
+
+
+
+
+
+
+
+        }
     }
 }
+

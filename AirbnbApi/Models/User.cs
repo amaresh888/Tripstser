@@ -5,7 +5,7 @@ namespace AirbnbApi.Models
 {
     public class User
     {
-        [Key]
+        
         public int UserId { get; set; }
 
         [Required(ErrorMessage = "Name is required")]
@@ -21,8 +21,10 @@ namespace AirbnbApi.Models
         [StringLength(100, MinimumLength = 6, ErrorMessage = "Password must be between 6 and 100 characters")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        [Required]
+        public double PhoneNumber { get; set; }
 
-       
+
         public ICollection<Booking> Bookings { get; set; }
     }
 }

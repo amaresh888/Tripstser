@@ -16,7 +16,6 @@
         position: relative;
     }
 
-        /* Overlay to darken background slightly */
         body::before {
             content: '';
             position: fixed;
@@ -34,8 +33,8 @@
     }
 
     .card {
-        background-color: rgba(20, 20, 20, 0.7); /* semi-transparent black */
-        backdrop-filter: blur(4px); /* slight blur */
+        background-color: rgba(20, 20, 20, 0.7);
+        backdrop-filter: blur(4px);
         border-radius: 15px;
         color: #fff;
         border: 1px solid rgba(255, 255, 255, 0.1);
@@ -60,30 +59,42 @@
         background: transparent;
         border-top: none;
     }
-</style>
 
+    .hotel-image {
+        height: 200px;
+        object-fit: cover;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+</style>
+<a asp-controller="Hotels" asp-action="Create">Create</a>
 <div class="content-wrapper">
     <h1 class="mb-4">Hotel Listings</h1>
 
-    <p>
-        <a asp-controller="Hotels" asp-action="Create" class="btn btn-primary mb-4">Create New</a>
-    </p>
+    
 
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
         @foreach (var item in Model)
         {
             <div class="col">
                 <div class="card h-100">
+                    <!-- Hotel Image -->
+                    <img src="@item.ImageUrl" class="card-img-top hotel-image" alt="Hotel Image" />
+
                     <div class="card-body">
                         <h5 class="card-title">@item.Title</h5>
                         <h6 class="card-subtitle mb-2 text-light">@item.Location</h6>
                         <p class="card-text">@item.Description</p>
                         <p class="card-text"><strong>₹@item.PricePerNight / night</strong></p>
+                        <div class="d-flex justify-content-end mt-3">
+                            <a asp-controller="Booking" asp-action="CreateBooking" asp-route-propertyId="@item.PropertyId" asp-route-Title="@item.Title" class="btn btn-primary">Book</a>
+
+                        </div>
                     </div>
+
                     <div class="card-footer">
                         <a asp-action="Edit" asp-route-id="@item.PropertyId" class="btn btn-sm btn-outline-warning me-2">Edit</a>
-                        <a asp-action="Details" asp-route-id="@item.PropertyId" class="btn btn-sm btn-outline-info me-2">Details</a>
-                        <a asp-action="Delete" asp-route-id="@item.PropertyId" class="btn btn-sm btn-outline-danger">Delete</a>
+                        
                     </div>
                 </div>
             </div>

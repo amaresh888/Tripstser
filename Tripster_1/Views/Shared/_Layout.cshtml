@@ -4,13 +4,53 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Tripster_1</title>
+
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            background: url('https://www.ohotelsindia.com/pune/images/13c6386862540c41822c39464b130b65.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            text-shadow: 1px 1px 2px black;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.6) !important;
+        }
+
+            .navbar a {
+                color: white !important;
+                font-weight: bold;
+            }
+
+        footer {
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+        }
+
+        .quote-box {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin: 10px auto;
+            max-width: 800px;
+        }
+    </style>
 </head>
 <body>
     <header>
         <!-- Navbar -->
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Tripster_1</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
@@ -19,41 +59,43 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                       
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Hotels" asp-action="Index">Hotels</a>
+                            <a class="nav-link" asp-controller="Hotels" asp-action="Index">Hotels</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Booking" asp-action="MyBookings">My Bookings</a>
+                            <a class="nav-link" asp-controller="Booking" asp-action="Index">Bookings</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Account" asp-action="Profile">Profile</a>
+                            <a class="nav-link" asp-controller="User" asp-action="AllUsers">Profile</a>
                         </li>
-
+                       @*  <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="User" asp-action="CreateUser">Login</a>
+                            </li>
+                        </ul>
+                         *@
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Admin" asp-action="Dashboard">Admin Dashboard</a>
+                                <a class="nav-link" asp-controller="Admin" asp-action="Dashboard">Admin Dashboard</a>
                             </li>
                         }
                     </ul>
-
-                    <!-- Login/Logout -->
-                    <partial name="_LoginPartial" />
                 </div>
+                <partial name="_LoginPartial"/>
             </div>
         </nav>
     </header>
 
+    <!-- Quotation -->
+    
     <!-- Main body content -->
     <main role="main" class="pb-3">
         @RenderBody()
     </main>
 
-    <footer class="border-top footer text-muted mt-auto">
-        <div class="container">
-            &copy; 2025 - Tripster_1
-        </div>
+    <footer class="border-top footer text-muted mt-auto text-center py-3">
+        &copy; 2025 - Tripster_1 | Explore. Dream. Discover.
     </footer>
 
     <!-- Scripts -->

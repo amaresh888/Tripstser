@@ -24,6 +24,8 @@ namespace AirbnbApi.Models
         [StringLength(1000, ErrorMessage = "Description can't be longer than 1000 characters")]
         public string Description { get; set; }
 
+        public string ImageUrl { get; set; } 
+
         // Navigation property
         public ICollection<Booking> Bookings { get; set; }
     }

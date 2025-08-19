@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace AirbnbApi.Models
 {
@@ -27,7 +28,12 @@ namespace AirbnbApi.Models
         [Display(Name = "Check-Out Date")]
         public DateTime CheckOutDate { get; set; }
 
-        
+       
+        [Required]
+        public int NumberofPeople { get; set; }
+
+
+
         public User User { get; set; }
         public Hotel Hotel { get; set; }
     }

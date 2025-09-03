@@ -17,6 +17,8 @@ namespace AirbnbApi.DTO
         [Required(ErrorMessage = "Password is required")]
         [StringLength(100, MinimumLength = 6, ErrorMessage = "Password must be at least 6 characters")]
         public string Password { get; set; }
+        [Required(ErrorMessage = "Enter the Vaild PhoneNumber")]
+      
         public double PhoneNumber { get; set; } 
     }
 }

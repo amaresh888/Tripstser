@@ -1,0 +1,140 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="about-page">
+    <div class="container py-5">
+        <h1 class="text-center mb-5 fw-bold text-white">About Tripster Hotels</h1>
+
+        <!-- Section 1 -->
+        <div class="row align-items-center mb-5 about-section">
+            <div class="col-md-6">
+                <h3 class="text-warning">Who We Are</h3>
+                <p>
+                    Tripster Hotels is your trusted platform for booking hotels across India.
+                    Our mission is to make travel easy, affordable, and comfortable by
+                    connecting travelers with verified stays that suit every budget.
+                </p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="https://media.istockphoto.com/id/472899538/photo/downtown-cleveland-hotel-entrance-and-waiting-taxi-cab.jpg?s=612x612&w=0&k=20&c=rz-WSe_6gKfkID6EL9yxCdN_UIMkXUBsr67884j-X9o="
+                     class="about-img" alt="About us image 1">
+            </div>
+        </div>
+
+        <!-- Section 2 -->
+        <div class="row align-items-center mb-5 about-section flex-md-row-reverse">
+            <div class="col-md-6">
+                <h3 class="text-warning">Our Vision</h3>
+                <p>
+                    We aim to become the leading hotel booking platform by focusing on
+                    customer satisfaction, innovative features, and providing
+                    personalized travel experiences for every type of traveler.
+                </p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="https://www.ohotelsindia.com/goa/images/bccadd6018a0421487734769d7014e73.jpg" class="about-img" alt="About us image 2">
+            </div>
+        </div>
+
+        <!-- Section 3 -->
+        <div class="row align-items-center mb-5 about-section">
+            <div class="col-md-6">
+                <h3 class="text-warning">Why Choose Us?</h3>
+                <p>
+                    From budget-friendly hostels to luxury resorts, Tripster Hotels
+                    provides a wide range of options. Our secure booking process,
+                    real-time chat support, and genuine reviews make us stand out.
+                </p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="https://res.cloudinary.com/dtxqeadyh/image/upload/v1755924626/ChatGPT_Image_Aug_23_2025_10_18_20_AM_cyizxs.png" class="about-img" alt="About us image 3">
+            </div>
+        </div>
+
+        <!-- Section 4 -->
+        <div class="row align-items-center mb-5 about-section flex-md-row-reverse">
+            <div class="col-md-6">
+                <h3 class="text-warning">Our Commitment</h3>
+                <p>
+                    At Tripster Hotels, we are committed to delivering excellence in
+                    service, affordable pricing, and transparency in bookings.
+                    With us, your comfort and trust always come first.
+                </p>
+            </div>
+            <div class="col-md-6 text-center">
+                <img src="https://res.cloudinary.com/dtxqeadyh/image/upload/v1755924813/type-entertainment-complex-popular-resort-with-pools-water-parks-turkey-with-more-than-5-million-visitors-year-amara-dolce-vita-luxury-hotel-resort-tekirova-kemer_lvghsm.jpg" class="about-img" alt="About us image 4">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Styling -->
+<style>
+    /* Full page background */
+    .about-page {
+        background: url('https://source.unsplash.com/1600x900/?luxury,hotel') no-repeat center center/cover;
+        min-height: 100vh;
+        position: relative;
+        padding: 40px 0;
+    }
+
+        /* Dark overlay */
+        .about-page::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: 0;
+        }
+
+        .about-page .container {
+            position: relative;
+            z-index: 1;
+        }
+
+    /* Glass effect cards */
+    .about-section {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        padding: 35px;
+        border-radius: 20px;
+        box-shadow: 0 6px 25px rgba(0,0,0,0.7);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .about-section:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 35px rgba(0,0,0,0.9);
+        }
+
+        /* Text */
+        .about-section p {
+            color: #f1f1f1;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+  
+    .about-img {
+        max-width: 400px; /* limit size */
+        width: 100%; /* responsive */
+        height: auto; /* maintain ratio */
+        border-radius: 15px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.8);
+        transition: transform 0.3s ease;
+    }
+
+        .about-img:hover {
+            transform: scale(1.05);
+        }
+
+    h3 {
+        font-family: 'Playfair Display', serif;
+        font-weight: bold;
+    }
+</style>

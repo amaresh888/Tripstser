@@ -158,6 +158,40 @@ namespace AirbnbApi.Migrations
                     b.ToTable("users");
                 });
 
+            modelBuilder.Entity("HotelbnbApi.Models.Payment", b =>
+                {
+                    b.Property<int>("PaymentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PaymentId"));
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("BookingId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("PaymentDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PaymentMethod")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("PaymentStatus")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("PaymentId");
+
+                    b.HasIndex("BookingId");
+
+                    b.ToTable("Payments");
+                });
+
             modelBuilder.Entity("AirbnbApi.Models.Booking", b =>
                 {
                     b.HasOne("AirbnbApi.Models.Hotel", "Hotel")
@@ -175,6 +209,17 @@ namespace AirbnbApi.Migrations
                     b.Navigation("Hotel");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("HotelbnbApi.Models.Payment", b =>
+                {
+                    b.HasOne("AirbnbApi.Models.Booking", "Booking")
+                        .WithMany()
+                        .HasForeignKey("BookingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Booking");
                 });
 
             modelBuilder.Entity("AirbnbApi.Models.Hotel", b =>

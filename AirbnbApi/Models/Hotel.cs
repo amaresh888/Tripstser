@@ -30,3 +30,4 @@ namespace AirbnbApi.Models
         public ICollection<Booking> Bookings { get; set; }
     }
 }
+  

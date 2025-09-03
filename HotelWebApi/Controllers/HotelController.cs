@@ -34,7 +34,7 @@ namespace HotelWebApi.Controllers
         }
         [HttpPost]
 
-        [Authorize(Roles ="Admin")]
+     //   [Authorize(Roles ="Admin")]
         public async Task<IActionResult> Create(HotelView model)
         {
             string data = JsonConvert.SerializeObject(model);
@@ -48,8 +48,8 @@ namespace HotelWebApi.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles ="Admin")]
-       
+      //  [Authorize(Roles ="Admin")]
+     
         public async Task<IActionResult> Update(int id, HotelView model)
         {
             string data = JsonConvert.SerializeObject(model);
@@ -74,7 +74,7 @@ namespace HotelWebApi.Controllers
 
         //}
         [HttpGet("{id}")]
-        [Authorize(Roles = "Admin,User")]
+      //  [Authorize(Roles = "Admin,User")]
         public async Task<IActionResult> GetById(int id)
         {
             var response = await _client.GetAsync($"https://localhost:7253/api/Hotel/{id}");

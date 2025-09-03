@@ -23,6 +23,8 @@ namespace Tripster_2.Models
         [StringLength(500, ErrorMessage = "Description can't exceed 500 characters")]
         public string Description { get; set; }
         public string ImageUrl { get; set; }
+        public string Name { get; set; }
+        public int UserId { get; set; } 
     }
 
 }

@@ -1,4 +1,5 @@
 ﻿using AirbnbApi.Models;
+using HotelbnbApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
@@ -13,6 +14,8 @@ namespace AirbnbApi.Data
         public DbSet<User> users { get; set; }
         public DbSet<Hotel> hotels { get; set; }
         public DbSet<Booking> bookings { get; set; }
+
+        public DbSet<Payment> Payments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

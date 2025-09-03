@@ -1,6 +1,7 @@
 ﻿using Azure;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Security.Policy;
 using System.Text;
 using Tripster_2.Models;
   
@@ -15,7 +16,7 @@ namespace Tripster_2.Controllers
             _client = new HttpClient();
         }
 
-        [HttpGet]
+        [HttpGet("Profile")]
         public async Task<IActionResult> Index()
         {
             List<BookViewModel> booklist = new List<BookViewModel>();
@@ -30,11 +31,21 @@ namespace Tripster_2.Controllers
         [HttpGet]
         public IActionResult CreateBooking(int PropertyId,string Title)
         {
+            int userId = (int)HttpContext.Session.GetInt32("UserId");
+            if (userId == 0)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             var model = new BookViewModel
             {
                 PropertyId = PropertyId,
                 
-                Title = Title
+                Title = Title,
+                     
+                UserId = (int)HttpContext.Session.GetInt32("UserId"),
+
+                Name = HttpContext.Session.GetString("UserName")
+
 
             };
             return View(model);
@@ -48,7 +59,9 @@ namespace Tripster_2.Controllers
 
         [HttpPost]
         public async Task<IActionResult> CreateBooking(BookViewModel model)
-        {
+         {
+            model.UserId = (int)HttpContext.Session.GetInt32("UserId");
+            
             string data = JsonConvert.SerializeObject(model);
             StringContent content = new StringContent(data, System.Text.Encoding.UTF8, "application/json");
 
@@ -56,7 +69,8 @@ namespace Tripster_2.Controllers
 
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToPage("/MyProfile");
+                return RedirectToAction("MyBookings");
+
 
             }
 
@@ -129,5 +143,49 @@ namespace Tripster_2.Controllers
 
 
         }
+        //[HttpGet]
+        //public async Task<IActionResult> GetById(int id)
+        //{
+        //    var response = await _client.GetAsync($"https://localhost:7228/api/Book/{id}");
+
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        string data = await response.Content.ReadAsStringAsync();
+        //        var book = JsonConvert.DeserializeObject<BookViewModel>(data);
+
+        //        if (book == null)
+        //        {
+        //            ViewBag.Error = "No booking found for this ID.";
+        //            return View("Error"); // optional error view
+        //        }
+
+        //        return View(book); // ✅ Sends to Razor View
+        //    }
+
+        //    ViewBag.Error = $"API Error: {response.StatusCode}";
+        //    return View("Error"); // safer than redirecting
+        //}
+        [HttpGet("MyBookings")]
+        public async Task<IActionResult> MyBookings()
+        {
+            // get logged in user id from session
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            List<BookViewModel> myBookings = new List<BookViewModel>();
+            var response = await _client.GetAsync($"https://localhost:7228/api/Book/GetBookingsByUser/{userId}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                myBookings = JsonConvert.DeserializeObject<List<BookViewModel>>(data);
+            }
+            else
+            {
+                ViewBag.Error = $"API Error: {response.StatusCode}";
+            }
+
+            return View(myBookings);
+        }
+
+
     }
 }

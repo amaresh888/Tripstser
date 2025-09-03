@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Tripster_2.Models;
 
 namespace Tripster_2.Areas.Identity.Pages.Account
 {
@@ -101,6 +102,24 @@ namespace Tripster_2.Areas.Identity.Pages.Account
             ReturnUrl = returnUrl;
         }
 
+        async Task<UserViewModel> GetUserByEmailAsync(string email)
+        {
+            UserViewModel user = null;
+            // This method should be implemented to retrieve the user by email from your database
+            // For example, using UserManager or a custom repository
+            using (var httpClient = new HttpClient())
+            {
+             //   httpClient.BaseAddress = new Uri("https://localhost:7253/");
+                var response = await httpClient.GetAsync($"https://localhost:7253/api/User/UserByEmail/{email}");
+                if (response.IsSuccessStatusCode)
+                {
+                    var data = await response.Content.ReadAsStringAsync();
+                    user = Newtonsoft.Json.JsonConvert.DeserializeObject<UserViewModel>(data);
+                    return user;
+                }
+            }
+            return user;
+        }
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
@@ -115,6 +134,16 @@ namespace Tripster_2.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    var user = await GetUserByEmailAsync(Input.Email);
+                    if (user != null)
+                    {
+                        HttpContext.Session.SetInt32("UserId", user.UserId);
+                        HttpContext.Session.SetString("UserName", user.Name);
+                    }
+                    else
+                    {
+                        _logger.LogWarning("User not found for email: {Email}", Input.Email);
+                    }
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

@@ -14,12 +14,13 @@
                 <div class="card-body px-4 py-4">
                     <form asp-action="CreateBooking" novalidate>
                         <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
-
+                        
                         @* <div class="form-floating mb-3">
                             <input asp-for="Id" class="form-control" placeholder="Id" />
                             <label asp-for="Id"></label>
                             <span asp-validation-for="Id" class="text-danger small"></span>
                         </div> *@
+                        @Html.Hidden("PropertyId",Model.PropertyId)
 
                         <div class="form-floating mb-3">
                             <input asp-for="Name" class="form-control" placeholder="Name"   />
@@ -32,12 +33,12 @@
                             <span asp-validation-for="Title" class="text-danger small"></span>
                         </div>
 
-                      @*   <div class="form-floating mb-3">
+                        @* <div class="form-floating mb-3">
                             <input asp-for="PropertyId" class="form-control" placeholder="Property ID" readonly />
                             <label asp-for="PropertyId"></label>
                             <span asp-validation-for="PropertyId" class="text-danger small"></span>
-                        </div> *@
-                       
+                        </div>
+                        *@
                         
 
                         <div class="form-floating mb-3">

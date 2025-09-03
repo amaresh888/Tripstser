@@ -21,7 +21,9 @@ namespace AirbnbApi.Models
         [StringLength(100, MinimumLength = 6, ErrorMessage = "Password must be between 6 and 100 characters")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
-        [Required]
+        
+        [Required(ErrorMessage = "Enter the Vaild PhoneNumber")]
+
         public double PhoneNumber { get; set; }
 
 

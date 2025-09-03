@@ -32,7 +32,19 @@ namespace AirbnbApi.Controllers
             var obj = _db.users.Find(id);
             if (obj == null)
             {
+
+
                 return NotFound($"User with ID {id} not found.");
+            }
+            return Ok(obj);
+        }
+        [HttpGet("UserByEmail/{email}")]
+        public IActionResult Get(string email)
+        {
+            var obj = _db.users.FirstOrDefault(u=>u.Email == email);
+            if (obj == null)
+            {
+                return NotFound($"User  not found.");
             }
             return Ok(obj);
         }

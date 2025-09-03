@@ -44,7 +44,7 @@ namespace BookWebApi.Controllers
 
             if (response.IsSuccessStatusCode)
                 return Ok("Created");
-
+            
             return BadRequest("Error creating booking");
         }
         [HttpPut("{id}")]
@@ -82,5 +82,23 @@ namespace BookWebApi.Controllers
             }
             return NotFound("Booking not found");
         }
+        [HttpGet("GetBookingsByUser/{userId}")]
+        public async Task<IActionResult> GetBookingsByUser(int userId)
+        {
+            List<BookView> userBookings = new List<BookView>();
+
+            
+            var response = await _client.GetAsync($"https://localhost:7253/api/Booking/GetBookingsByUser/{userId}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                userBookings = JsonConvert.DeserializeObject<List<BookView>>(data);
+                return Ok(userBookings);
+            }
+
+            return BadRequest("Unable to fetch bookings for this user");
+        }
+
     }
 }

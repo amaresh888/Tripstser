@@ -93,6 +93,10 @@
                 <input asp-for="PhoneNumber" class="form-control" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
+            <div>
+                <label>Profile Image</label>
+                <input asp-for="ProfileImage" type="file" class="form-control" />
+            </div>
 
             <input type="submit" value="Create" class="btn btn-primary" />
         </form>

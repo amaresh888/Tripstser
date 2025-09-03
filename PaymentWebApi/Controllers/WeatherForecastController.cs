@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace BookWebApi.Controllers
+namespace PaymentWebApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]

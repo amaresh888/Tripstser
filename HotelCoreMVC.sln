@@ -34,6 +34,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcelotGateway", "OcelotGate
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tripster_2", "Tripster_2\Tripster_2.csproj", "{095FF0D6-CFD4-4D2F-A9D9-D0550C5AD88C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentWebApi", "PaymentWebApi\PaymentWebApi.csproj", "{A5C374A8-B82B-4BE6-B5C1-7B69AAA57EBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -76,6 +78,10 @@ Global
 		{095FF0D6-CFD4-4D2F-A9D9-D0550C5AD88C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{095FF0D6-CFD4-4D2F-A9D9-D0550C5AD88C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{095FF0D6-CFD4-4D2F-A9D9-D0550C5AD88C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5C374A8-B82B-4BE6-B5C1-7B69AAA57EBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5C374A8-B82B-4BE6-B5C1-7B69AAA57EBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5C374A8-B82B-4BE6-B5C1-7B69AAA57EBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5C374A8-B82B-4BE6-B5C1-7B69AAA57EBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +96,7 @@ Global
 		{487901CB-F8EF-400F-A814-8BC4AF62901B} = {6F215027-97C5-420C-B7E8-5C51DC0764A9}
 		{7E95764C-9AA4-441F-96EE-0957C4D2D4D0} = {6F215027-97C5-420C-B7E8-5C51DC0764A9}
 		{095FF0D6-CFD4-4D2F-A9D9-D0550C5AD88C} = {EA2BAC1A-5580-4EAE-8E6D-CD4D033374C3}
+		{A5C374A8-B82B-4BE6-B5C1-7B69AAA57EBF} = {1FF3692B-CC10-4BCC-BAE3-70E292734AAA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D45FC23F-7642-41FB-A44D-F17586780928}

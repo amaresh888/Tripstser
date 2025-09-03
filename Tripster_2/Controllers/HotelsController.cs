@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Tripster_2.Models; // Make sure this namespace contains HotelViewModel
+using Tripster_2.Models; 
 
 namespace Tripster_2.Controllers
 {
@@ -16,7 +16,7 @@ namespace Tripster_2.Controllers
 
         public HotelsController()
         {
-            _client = new HttpClient();
+            _client = new HttpClient();     
            
         }
         //[AllowAnonymous]
@@ -65,14 +65,9 @@ namespace Tripster_2.Controllers
             return View(model);
         }
         [HttpGet]
+       
         public async Task<IActionResult> Edit(int id)
         {
-            var userName = HttpContext.Session.GetString("userName");
-            if (string.IsNullOrEmpty(userName))
-            {
-                
-                return Redirect("/Identity/Account/Login");
-            }
             var response = await _client.GetAsync($"https://localhost:7144/api/Hotel/{id}");
             if (response.IsSuccessStatusCode)
             {
@@ -91,10 +86,7 @@ namespace Tripster_2.Controllers
 
         public async Task<IActionResult> Edit(int id, HotelViewModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
+            
             string data = JsonConvert.SerializeObject(model);
             StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
             var response = await _client.PutAsync($"https://localhost:7144/api/Hotel/{id}", content);

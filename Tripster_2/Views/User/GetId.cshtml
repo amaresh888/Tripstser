@@ -106,6 +106,6 @@
             <span class="detail-value">@Model.PhoneNumber</span>
         </div>
 
-        <a asp-action="EditUser" asp-controller="User" class="edit-btn">Edit Profile</a>
+        <a asp-action="EditUser" asp-route-id=@Model.UserId  asp-controller="User" class="edit-btn">Edit Profile</a>
     </div>
 </div>

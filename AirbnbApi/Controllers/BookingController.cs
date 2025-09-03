@@ -65,6 +65,7 @@ namespace AirbnbApi.Controllers
                 CheckOutDate = booking.CheckOutDate,
                 NumberofPeople = booking.NumberofPeople
             };
+            //bookingDTO.Id = booking.Id;
             return Ok(bookingDTO);
         }
         [HttpPost]
@@ -81,8 +82,8 @@ namespace AirbnbApi.Controllers
                 CheckInDate = book.CheckInDate,
                 CheckOutDate = book.CheckOutDate,
                 NumberofPeople = book.NumberofPeople
+                
             };
-
             _db.bookings.Add(booking);
             _db.SaveChanges();
 
@@ -124,6 +125,41 @@ namespace AirbnbApi.Controllers
             return Ok($"Booking with ID {id} deleted successfully.");
 
         }
+        [HttpGet("user/{userId}")]
+        public IActionResult GetBookingsByUser(int userId)
+        {
+            var bookings = _db.bookings
+                .Where(b => b.UserId == userId)
+                .ToList();
+
+            if (bookings == null || !bookings.Any())
+            {
+                return NotFound($"No bookings found for UserId {userId}");
+            }
+
+            List<BookingDTO> bookingDTOs = new List<BookingDTO>();
+            foreach (var booking in bookings)
+            {
+                var user = _db.users.Find(booking.UserId);
+                var property = _db.hotels.Find(booking.PropertyId);
+
+                BookingDTO bookingDTO = new BookingDTO
+                {
+                    Id = booking.Id,
+                    UserId = user.UserId,
+                    Name = user.Name,
+                    PropertyId = property.PropertyId,
+                    Title = property.Title,
+                    CheckInDate = booking.CheckInDate,
+                    CheckOutDate = booking.CheckOutDate,
+                    NumberofPeople = booking.NumberofPeople
+                };
+                bookingDTOs.Add(bookingDTO);
+            }
+
+            return Ok(bookingDTOs);
+        }
+
     }
-   
+
 }

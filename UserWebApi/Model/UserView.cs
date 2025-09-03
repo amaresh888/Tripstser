@@ -1,4 +1,6 @@
-﻿namespace UserWebApi.Model
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace UserWebApi.Model
 {
     public class UserView
     {
@@ -8,6 +10,8 @@
         public string Email { get; set; }
 
         public string Password { get; set; }
+        [Required(ErrorMessage = "Enter the Vaild PhoneNumber")]
+       
         public double PhoneNumber { get; set; }        
 
 

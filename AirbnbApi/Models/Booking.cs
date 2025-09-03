@@ -36,5 +36,6 @@ namespace AirbnbApi.Models
 
         public User User { get; set; }
         public Hotel Hotel { get; set; }
+        
     }
 }

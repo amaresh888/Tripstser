@@ -26,6 +26,8 @@ namespace AirbnbApi.Models
 
         public string ImageUrl { get; set; } 
 
+        public bool IsAvailable { get; set; } 
+
         // Navigation property
         public ICollection<Booking> Bookings { get; set; }
     }

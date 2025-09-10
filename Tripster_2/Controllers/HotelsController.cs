@@ -61,7 +61,7 @@ namespace Tripster_2.Controllers
 
             var errorResponse = await response.Content.ReadAsStringAsync();
             ModelState.AddModelError("", $"API Error: {errorResponse}");
-
+             
             return View(model);
         }
         [HttpGet]

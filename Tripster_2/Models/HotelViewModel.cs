@@ -24,6 +24,8 @@ namespace Tripster_2.Models
         public string Description { get; set; }
         public string ImageUrl { get; set; }
         public string Name { get; set; }
+
+        public bool IsAvailable { get; set; }
         public int UserId { get; set; } 
     }
 

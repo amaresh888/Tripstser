@@ -27,7 +27,8 @@ namespace AirbnbApi.Data
             Description = "Beach-facing villa with stunning sunrise views.",
             Location = "Goa",
             PricePerNight = 2500,
-            ImageUrl= "https://res.cloudinary.com/dtxqeadyh/image/upload/v1754644616/pexels-kelly-2869215_lla3mr.jpg"
+            IsAvailable = true,
+            ImageUrl = "https://res.cloudinary.com/dtxqeadyh/image/upload/v1754644616/pexels-kelly-2869215_lla3mr.jpg"
         },
         new Hotel
         {
@@ -36,6 +37,7 @@ namespace AirbnbApi.Data
             Description = "Cozy cottage in the heart of the mountains.",
             Location = "Manali",
             PricePerNight = 3000,
+            IsAvailable = true,
             ImageUrl = "https://res.cloudinary.com/dtxqeadyh/image/upload/v1754644760/pexels-boonkong-boonpeng-442952-1134176_stpwik.jpg"
         },
         new Hotel
@@ -45,6 +47,7 @@ namespace AirbnbApi.Data
             Description = "Luxury suite with skyline views.",
             Location = "Mumbai",
             PricePerNight = 5000,
+            IsAvailable = true,
             ImageUrl = "https://res.cloudinary.com/dtxqeadyh/image/upload/v1754644801/pexels-pixabay-261388_unh5uf.jpg"
         },
         new Hotel
@@ -54,6 +57,7 @@ namespace AirbnbApi.Data
             Description = "Authentic Rajasthani tents in the Thar desert.",
             Location = "Jaisalmer",
             PricePerNight = 2000,
+            IsAvailable = true,
             ImageUrl = "https://res.cloudinary.com/dtxqeadyh/image/upload/v1754644858/pexels-thorsten-technoman-109353-338504_amp2hh.jpg"
         });
 

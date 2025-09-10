@@ -87,8 +87,8 @@ namespace BookWebApi.Controllers
         {
             List<BookView> userBookings = new List<BookView>();
 
-            
-            var response = await _client.GetAsync($"https://localhost:7253/api/Booking/GetBookingsByUser/{userId}");
+           
+            var response = await _client.GetAsync($"https://localhost:7253/api/Booking/user/{userId}");
 
             if (response.IsSuccessStatusCode)
             {
@@ -99,6 +99,7 @@ namespace BookWebApi.Controllers
 
             return BadRequest("Unable to fetch bookings for this user");
         }
+
 
     }
 }

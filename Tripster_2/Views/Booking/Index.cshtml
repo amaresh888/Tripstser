@@ -5,7 +5,7 @@
 }
 
 <div class="container mt-5">
-    <h2 class="fw-bold text-center text-gradient mb-5">✨All Users Bookings ✨</h2>
+    <h2 class="fw-bold text-center text-gradient mb-5">✨ All Users Bookings ✨</h2>
 
     @if (Model != null && Model.Any())
     {
@@ -47,58 +47,61 @@
 <!-- Custom Styling -->
 <style>
     body {
-        background: linear-gradient(135deg, #4facfe, #00f2fe);
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* Deep luxury gradient */
         min-height: 100vh;
         font-family: 'Poppins', sans-serif;
     }
 
     .text-gradient {
-        background: linear-gradient(to right, #ff6a00, #ee0979);
+        background: linear-gradient(to right, #f7971e, #ffd200); /* Golden title effect */
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 
     .booking-card {
-        background: rgba(255, 255, 255, 0.1); /* Slightly transparent for gradient effect */
+        background: rgba(255, 255, 255, 0.08); /* Glassmorphism */
         border-radius: 20px;
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(12px);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border: 2px solid rgba(255, 255, 255, 0.4);
-        color: #fff; /* White text */
-        text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Subtle shadow for contrast */
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
     }
 
         .booking-card h4,
-        .booking-card p,
-        .booking-card .badge {
-            color: #fff; /* Ensure badge text is also visible */
+        .booking-card p {
+            color: #fff;
         }
 
         .booking-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
     .badge.bg-gradient {
-        background: linear-gradient(to right, #ff512f, #dd2476);
+        background: linear-gradient(to right, #ff512f, #f09819); /* Orange-Red gradient */
         font-size: 0.85rem;
-        padding: 8px 12px;
+        padding: 8px 14px;
         border-radius: 12px;
         color: #fff;
+        font-weight: 600;
     }
 
     .btn-edit {
-        background: linear-gradient(to right, #36d1dc, #5b86e5);
+        background: linear-gradient(to right, #6a11cb, #2575fc); /* Purple to Blue */
         color: #fff;
         font-weight: 600;
         border: none;
         border-radius: 25px;
         transition: 0.3s;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
         .btn-edit:hover {
-            background: linear-gradient(to right, #5b86e5, #36d1dc);
-            transform: scale(1.05);
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+            transform: scale(1.07);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.35);
         }
 </style>
 

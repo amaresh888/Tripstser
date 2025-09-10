@@ -6,83 +6,122 @@
 
 <style>
     body {
-        background: #f3f3f3;
+        background: #f7f9fc;
         font-family: 'Segoe UI', sans-serif;
     }
 
-    .profile-container {
-        max-width: 800px;
+    .profile-wrapper {
         margin: 50px auto;
+        max-width: 900px;
         background: #fff;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        display: flex;
-        gap: 30px;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        animation: fadeIn 0.6s ease-in-out;
     }
 
+    /* Banner */
+    .profile-header {
+        background: linear-gradient(135deg, #ff9900, #ff6600);
+        height: 120px;
+        position: relative;
+    }
+
+    /* Profile picture */
     .profile-image {
-        flex: 0 0 150px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        position: absolute;
+        top: 50%;
+        left: 30px;
+        transform: translateY(-50%);
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        border: 5px solid #fff;
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
 
         .profile-image img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            border: 2px solid #ddd;
         }
 
+    /* Details section */
     .profile-details {
-        flex: 1;
+        padding: 80px 40px 40px 200px;
     }
 
         .profile-details h2 {
-            margin-bottom: 20px;
+            font-size: 28px;
             font-weight: 600;
             color: #333;
+            margin-bottom: 25px;
         }
 
     .detail-item {
-        margin-bottom: 15px;
+        margin-bottom: 18px;
+        display: flex;
+        align-items: center;
     }
 
     .detail-label {
         font-weight: bold;
-        color: #555;
-        display: inline-block;
-        width: 150px;
+        color: #666;
+        width: 160px;
+        font-size: 15px;
     }
 
     .detail-value {
         color: #222;
+        font-size: 16px;
     }
 
+    /* Button */
     .edit-btn {
+        display: inline-block;
+        margin-top: 20px;
         background: #ff9900;
         color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-weight: bold;
-        cursor: pointer;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 12px 25px;
+        border-radius: 30px;
+        transition: 0.3s;
     }
 
         .edit-btn:hover {
             background: #e68a00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
+
+    /* Animation */
+    @@keyframes fadeIn {
+        from
+
+    {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    }
 </style>
 
-<div class="profile-container">
-    <!-- Left Side Profile Image -->
-    <div class="profile-image">
-        <img src="/images/default-profile.png" alt="Profile Picture" />
+<div class="profile-wrapper">
+    <!-- Header -->
+    <div class="profile-header">
+        <div class="profile-image">
+            <img src="/images/default-profile.png" alt="Profile Picture" />
+        </div>
     </div>
 
-    <!-- Right Side Details -->
+    <!-- User Details -->
     <div class="profile-details">
         <h2>My Profile</h2>
 
@@ -98,7 +137,7 @@
 
         <div class="detail-item">
             <span class="detail-label">Password:</span>
-            <span class="detail-value">@Model.Password</span>
+            <span class="detail-value">••••••••</span> <!-- Hide password -->
         </div>
 
         <div class="detail-item">
@@ -106,6 +145,6 @@
             <span class="detail-value">@Model.PhoneNumber</span>
         </div>
 
-        <a asp-action="EditUser" asp-route-id=@Model.UserId  asp-controller="User" class="edit-btn">Edit Profile</a>
+        <a asp-action="EditUser" asp-route-id="@Model.UserId" asp-controller="User" class="edit-btn">Edit Profile</a>
     </div>
 </div>

@@ -10,6 +10,8 @@ namespace HotelWebApi.Models
         public string Location { get; set; }
         public int PricePerNight { get; set; }
         public string Description { get; set; }
-        public string ImageUrl { get; set; } 
+        public string ImageUrl { get; set; }
+
+        public bool IsAvailable { get; set; }
     }
 }

@@ -168,8 +168,12 @@ namespace Tripster_2.Controllers
         [HttpGet("MyBookings")]
         public async Task<IActionResult> MyBookings()
         {
-            // get logged in user id from session
             int? userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             List<BookViewModel> myBookings = new List<BookViewModel>();
             var response = await _client.GetAsync($"https://localhost:7228/api/Book/GetBookingsByUser/{userId}");
 

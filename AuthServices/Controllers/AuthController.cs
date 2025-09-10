@@ -10,7 +10,7 @@ using System.Security.Claims;
 using System.Text;
 
 namespace AuthService.Controllers
-{
+{   
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase

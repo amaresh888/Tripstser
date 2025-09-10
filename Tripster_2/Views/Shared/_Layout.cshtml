@@ -13,8 +13,16 @@
 
     <!-- Custom Styles -->
     <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevents sideways movement */
+            height: 100%;
+            width: 100%;
+        }
+
         body {
-            background: url('https://www.ohotelsindia.com/pune/images/13c6386862540c41822c39464b130b65.jpg') no-repeat center center fixed;
+            background: url('https://res.cloudinary.com/dtxqeadyh/image/upload/v1757399141/Skyhaven_It_is_a_negotiation_between_structure_and_rxwrr8.jpg') no-repeat center center fixed;
             background-size: cover;
             font-family: 'Roboto', sans-serif;
             color: white;
@@ -25,10 +33,10 @@
             background: rgba(0, 0, 0, 0.6) !important;
         }
 
-            .navbar a {
-                color: white !important;
-                font-weight: bold;
-            }
+        .navbar a {
+            color: white !important;
+            font-weight: bold;
+        }
 
         footer {
             background: rgba(0, 0, 0, 0.7);
@@ -52,7 +60,7 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Tripster_2</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Tripster</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -62,22 +70,7 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-controller="Hotels" asp-action="Index">Hotels</a>
                         </li>
-                       
-                        @* <li class="nav-item">
-                            <a class="nav-link" asp-controller="Booking" asp-action="Index">Bookings</a>
-                        </li> *@
-                        @* <li class="nav-item">
-                            <a class="nav-link"  asp-controller="User" asp-action="GetId">
-                                My Profile
-                            </a>
-                        </li> *@
 
-                        @*  <ul class="navbar-nav ms-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" asp-controller="User" asp-action="CreateUser">Login</a>
-                            </li>
-                        </ul>
-                         *@
                         @if (User.IsInRole("Admin"))                    
                         {
                             <li class="nav-item">
@@ -86,35 +79,35 @@
                             <li class="nav-item">
                                 <a class="nav-link" asp-controller="User" asp-action="AllUsers">Profiles</a>
                             </li>
-
                         }
-                       
 
                         @if (User.IsInRole("User"))
                         {
                             var id = Context.Session.GetInt32("UserId");
                             <li class="nav-item">
-                            <a class="nav-link" asp-controller="User" asp-action="GetId" asp-route-id="@id">
-                                My Profile 
-                            </a>
-
-                             </li>
+                                <a class="nav-link" asp-controller="User" asp-action="GetId" asp-route-id="@id">
+                                    My Profile 
+                                </a>
+                            </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" asp-controller="Booking" asp-route-id="@id" asp-action="MyBookings">
+                                <a class="nav-link" asp-controller="Booking" asp-action="MyBookings">
                                     My Bookings
                                 </a>
-                            </li>                              
-                            
-                         
+                            </li>
 
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="ContactUs" asp-action="Index">
+                                    Contact Us
+                                </a>
+                            </li>
                         }
+
                         <li class="nav-item">
                             <a class="nav-link" asp-action="Index" asp-controller="AboutUs">
                                 About Us
                             </a>
                         </li>
-
                     </ul>
                 </div>
                 <partial name="_LoginPartial" />
@@ -122,7 +115,6 @@
         </nav>
     </header>
 
-    <!-- Quotation -->
     <!-- Main body content -->
     <main role="main" class="pb-3">
         @RenderBody()

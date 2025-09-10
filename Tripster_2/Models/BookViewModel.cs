@@ -11,6 +11,8 @@ namespace Tripster_2.Models
         [Required(ErrorMessage = "User ID is required")]
         [Range(1, int.MaxValue, ErrorMessage = "User ID must be a positive number")]
         public int UserId { get; set; }
+       
+        public string HotelName { get; set; }   
         public string Name { get; set; }
         //public int PhoneNumber { get; set; }
         //public string Email { get; set; }

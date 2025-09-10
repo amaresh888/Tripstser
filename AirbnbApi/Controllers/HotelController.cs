@@ -49,6 +49,7 @@ namespace AirbnbApi.Controllers
                 Location = hotelDto.Location,
                 PricePerNight = hotelDto.PricePerNight,
                 Description = hotelDto.Description,
+                IsAvailable = hotelDto.IsAvailable,
                 ImageUrl = hotelDto.ImageUrl
             };
 
@@ -72,6 +73,7 @@ namespace AirbnbApi.Controllers
             hotel.Description = dto.Description;
             hotel.PricePerNight = dto.PricePerNight;
             hotel.ImageUrl = dto.ImageUrl;
+            hotel.IsAvailable = dto.IsAvailable;
             _db.hotels.Update(hotel);
 
             _db.SaveChanges();
